@@ -63,3 +63,5 @@ console.log(clone2);
 console.log("SuperClone", superClone);
 
 // First we are the stringifying the entire object, then we are parsing the entire string which will convert to the object
+
+// By default js is "pass by value"
