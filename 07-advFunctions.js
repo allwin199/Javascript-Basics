@@ -1,10 +1,10 @@
 const first = () => {
-  const greet = "Hi";
-  const second = () => {
-    alert(greet);
-  }
-  return second;
-}
+    const greet = "Hi";
+    const second = () => {
+        alert(greet);
+    };
+    return second;
+};
 
 const newFunc = first();
 newFunc();
@@ -21,20 +21,19 @@ newFunc();
 // Since it is a closure, the child scope will always have access to the parent scope.
 // Therfore second() will have access to the greet
 
-
 // Currying
 const makeAdder = (x) => {
-  return (y) => {
-    return x + y;
-  };
-}
+    return (y) => {
+        return x + y;
+    };
+};
 
 // Partially applied functions
 const add5 = makeAdder(5);
 
 console.log(add5(2)); // 7
 
-const makeAdder2 = x => y => x + y;
+const makeAdder2 = (x) => (y) => x + y;
 const newMakeAdder = makeAdder2(5);
 console.log(newMakeAdder(2));
 
@@ -49,19 +48,21 @@ console.log(newMakeAdder(2));
 // Currying is a function that takes one argument at a time and returns a new function expecting the next argument. It is a transformation of functions that translates a function from callable as f(a, b, c) into callable as f(a)(b)(c).
 
 const sendRequest1 = (greet) => {
-  return (name) => {
-    return (message) => {
-      return `${greet} ${name}, ${message}`
-    }
-  }
-}
-sendRequest1('Hello')('John')('Please can you add me to your Linkedin network?')
+    return (name) => {
+        return (message) => {
+            return `${greet} ${name}, ${message}`;
+        };
+    };
+};
+sendRequest1("Hello")("John")(
+    "Please can you add me to your Linkedin network?"
+);
 
 // Modern Currying with Es6
-const sendRequest = greet => name => message =>
-  `${greet} ${name}, ${message}`
+const sendRequest = (greet) => (name) => (message) =>
+    `${greet} ${name}, ${message}`;
 
-sendRequest('Hello')('John')('Please can you add me to your Linkedin network?')
+sendRequest("Hello")("John")("Please can you add me to your Linkedin network?");
 
 // The above one's are basic currying
 
@@ -83,23 +84,16 @@ compose(sum, sum)(5);
 
 // f(g(a)) = f(sum(a)) = f(sum(5)) = f(6) = sum(6) = 7
 
-
-
 // Side Effects
 
 let a = 1;
 
 const changinga = () => {
-  a = 2;
-}
+    a = 2;
+};
 
 changinga();
 console.log(a);
 
 // Whenever a outside variable is changed inside the fn, it is called side effects
 // Try to avoid side effects at all cost
-
-
-
-
-
